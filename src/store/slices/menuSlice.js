@@ -3,14 +3,25 @@ import { createSlice } from "@reduxjs/toolkit";
 const menuSlice = createSlice({
   name: 'menu',
   initialState: {
-    choseTitle: '',
+    quizTitle: '',
+    quizIcon: '',
+    quizzes: [],
   },
   reducers: {
-    changeTitle(state, action) {
-      state.choseTitle = action.payload //action.payload 會返回資訊、在此儲存至 state
+    chooseTitle(state, action) {
+      state.quizTitle = action.payload //action.payload 會返回資訊、在此儲存至 state
+      console.log(state.quizTitle);
+    },
+    chooseIcon(state, action) {
+      state.quizIcon = action.payload
+      console.log(state.quizIcon);
+    },
+    setQuiz(state, action) {
+      state.quizzes = action.payload
+      console.log(state.quizzes);
     }
   }
 })
 
-export const { changeTitle } = menuSlice.actions;
+export const { chooseTitle, chooseIcon, setQuiz } = menuSlice.actions;
 export const menuReducer = menuSlice.reducer; // onc single combined reducer
