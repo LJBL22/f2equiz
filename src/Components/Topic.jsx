@@ -1,12 +1,15 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { chooseIcon, chooseTitle } from '../store';
 
 const Topic = ({ img, text }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const setTopic = () => {
     //change state
     dispatch(chooseTitle(text));
     dispatch(chooseIcon(img));
+    navigate(`/${text}`);
   };
   return (
     <div

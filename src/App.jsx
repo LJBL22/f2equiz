@@ -17,7 +17,7 @@ const App = () => {
           element: <Menu />,
         },
         {
-          path: 'quiz',
+          path: ':topic', //依據帶入的參數而變動 //可自由命名變數
           element: <Quiz />,
         },
         {
