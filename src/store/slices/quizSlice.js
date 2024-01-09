@@ -3,23 +3,29 @@ import { createSlice } from "@reduxjs/toolkit";
 const quizSlice = createSlice({
   name: 'quiz',
   initialState: {
-    currentTopic: '', // 端看傳入何 // 如何設計傳入？ useEffect? 不需要保存這個 state?
-    currentQuestionIndex: 0, //currentTopic.questions[0]
-    correctNum: 0,
+    index: 0,
+    questions: [],
+    selectedAnswer: '',
+    correctAnswer: '',
+    score: 0,
   },
   reducers: {
+    setQuestions(state, action) {
+      state.questions = action.payload
+    },
+    chooseAnswer(state, action) {
+      state.selectedAnswer = action.payload
+    },
     // 按第一次 submit
-    updateCorrectNum(state, action) {
-      if (action.payload) {
-        state.correctNum += 1
-      }
+    updateScore(state, action) {
+      state.score++;
     },
     // 按第二次 submit
-    changeCurrentQuestionIndex(state, action) {
-      state.currentQuestionIndex += 1;
+    updateIndex(state, action) {
+      state.index++;
     }
   },
 })
 
-export const { changeCurrentQuestionIndex, updateCorrectNum } = quizSlice.actions;
+export const { setQuestions, chooseAnswer, updateIndex, updateScore } = quizSlice.actions;
 export const quizReducer = quizSlice.reducer;

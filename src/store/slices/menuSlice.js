@@ -10,11 +10,9 @@ const menuSlice = createSlice({
   reducers: {
     chooseTitle(state, action) {
       state.quizTitle = action.payload //action.payload 會返回資訊、在此儲存至 state
-      console.log(state.quizTitle);
     },
     chooseIcon(state, action) {
       state.quizIcon = action.payload
-      console.log(state.quizIcon);
     },
     setQuiz(state, action) {
       state.quizzes = action.payload

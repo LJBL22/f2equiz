@@ -12,13 +12,13 @@ const Topic = ({ img, text }) => {
     navigate(`/${text}`);
   };
   return (
-    <div
+    <button
       className='container flex flex-row p-3 cursor-pointer'
       onClick={setTopic}
     >
       <img src={img} alt={text} />
-      <p>{text}</p>
-    </div>
+      <span>{text}</span>
+    </button>
   );
 };
 
