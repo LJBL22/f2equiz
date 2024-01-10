@@ -6,6 +6,7 @@ const menuSlice = createSlice({
     quizTitle: '',
     quizIcon: '',
     quizzes: [],
+    darkMode: false
   },
   reducers: {
     chooseTitle(state, action) {
@@ -17,9 +18,12 @@ const menuSlice = createSlice({
     setQuiz(state, action) {
       state.quizzes = action.payload
       console.log(state.quizzes);
+    },
+    setDarkMode(state, action) {
+      state.darkMode = action.payload
     }
   }
 })
 
-export const { chooseTitle, chooseIcon, setQuiz } = menuSlice.actions;
+export const { chooseTitle, chooseIcon, setQuiz, setDarkMode } = menuSlice.actions;
 export const menuReducer = menuSlice.reducer; // onc single combined reducer

@@ -11,13 +11,27 @@ const Topic = ({ img, text }) => {
     dispatch(chooseIcon(img));
     navigate(`/${text}`);
   };
+
+  const bgColors = {
+    HTML: '#FFF1E9',
+    CSS: '#E0FDEF',
+    JavaScript: '#EBF0FF',
+    Accessibility: '#F6E7FF',
+  };
+
+  const bgStyle = `bg-[${bgColors[text]}]`;
+
   return (
     <button
-      className='container flex flex-row p-3 cursor-pointer'
+      className='flex flex-row p-3 cursor-pointer items-center bg-pure-white w-full rounded-xl'
       onClick={setTopic}
     >
-      <img src={img} alt={text} />
-      <span>{text}</span>
+      <img
+        src={img}
+        alt={text}
+        className={`w-10 h-10 p-2 rounded-md  ${bgStyle} mr-4`}
+      />
+      <span className='inline-block text-lg'>{text}</span>
     </button>
   );
 };
