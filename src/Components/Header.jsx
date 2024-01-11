@@ -24,7 +24,7 @@ const Header = () => {
           alt={quizTitle}
           className={`w-10 h-10 p-2 rounded-md ${bgStyle} mr-4`}
         />
-        <span className='inline-block text-lg'>{quizTitle}</span>
+        <span className='inline-block text-lg font-medium'>{quizTitle}</span>
       </div>
       <Switch />
     </header>
