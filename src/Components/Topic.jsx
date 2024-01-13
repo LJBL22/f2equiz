@@ -19,7 +19,9 @@ const Topic = ({ img, text }) => {
     Accessibility: '#F6E7FF',
   };
 
-  const bgStyle = `bg-[${bgColors[text]}]`;
+  const bgStyle = {
+    backgroundColor: bgColors[text],
+  };
 
   return (
     <button
@@ -29,7 +31,8 @@ const Topic = ({ img, text }) => {
       <img
         src={img}
         alt={text}
-        className={`w-10 h-10 p-2 rounded-md  ${bgStyle} mr-4`}
+        className='w-10 h-10 p-2 rounded-md mr-4'
+        style={bgStyle}
       />
       <span className='inline-block text-lg font-medium'>{text}</span>
     </button>

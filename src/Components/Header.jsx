@@ -1,9 +1,9 @@
 import Switch from './Switch';
-import Topic from './Topic';
 import { useSelector } from 'react-redux';
 
 const Header = () => {
   const { quizIcon, quizTitle } = useSelector((state) => state.menu); //取用 access state
+
   const bgColors = {
     HTML: '#FFF1E9',
     CSS: '#E0FDEF',
@@ -11,7 +11,11 @@ const Header = () => {
     Accessibility: '#F6E7FF',
   };
 
-  const bgStyle = `bg-[${bgColors[quizTitle]}]`;
+  const bgStyle = {
+    // JIT Tailwind CSS
+    backgroundColor: bgColors[quizTitle],
+  };
+
   return (
     <header className='flex flex-row justify-between py-4 '>
       <div
@@ -22,7 +26,8 @@ const Header = () => {
         <img
           src={quizIcon}
           alt={quizTitle}
-          className={`w-10 h-10 p-2 rounded-md ${bgStyle} mr-4`}
+          className='w-10 h-10 p-2 rounded-md mr-4'
+          style={bgStyle}
         />
         <span className='inline-block text-lg font-medium'>{quizTitle}</span>
       </div>
