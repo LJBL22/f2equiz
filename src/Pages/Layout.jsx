@@ -8,7 +8,7 @@ const Layout = () => {
     ? 'bg-[url(./pattern-background-mobile-dark.svg)] bg-navy-dark tablet:bg-[url(./pattern-background-tablet-dark.svg) '
     : 'bg-[url(./pattern-background-mobile-light.svg)] bg-light-grey tablet:bg-[url(./pattern-background-tablet-light.svg)';
   return (
-    <div className={`h-screen font-rubik ${bgImg}  px-5`}>
+    <div className={`h-screen font-rubik ${bgImg}  px-5 text-navy-dark`}>
       <Header />
       <Outlet />
     </div>

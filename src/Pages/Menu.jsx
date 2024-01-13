@@ -18,9 +18,19 @@ const Menu = () => {
 
   return (
     <>
-      <h1 className='text-4xl my-4'>Welcome to the Frontend Quiz!</h1>
-      <h4 className='text-sm italic mb-10'>Pick a subject to get started.</h4>
-      <div className='space-y-3'>{renderedTopics}</div>
+      <section>
+        <h1 className='text-4xl my-4'>
+          <span className='font-light'>Welcome to the </span>
+          <br />
+          <span className='font-medium'>Frontend Quiz!</span>
+        </h1>
+        <h4 className='text-sm italic mb-10 text-navy-grey'>
+          Pick a subject to get started.
+        </h4>
+      </section>
+      <section>
+        <div className='space-y-3'>{renderedTopics}</div>
+      </section>
     </>
   );
 };
