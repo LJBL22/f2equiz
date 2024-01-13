@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { menuReducer, chooseTitle, chooseIcon, setQuiz, setDarkMode } from "./slices/menuSlice";
-import { quizReducer, setQuestions, chooseAnswer, updateIndex, updateScore } from "./slices/quizSlice";
+import { quizReducer, setQuestions, setCorrectAnswer, chooseAnswer, updateIndex, updateScore } from "./slices/quizSlice";
 
 
 const store = configureStore({
@@ -10,4 +10,4 @@ const store = configureStore({
   }
 })
 
-export { store, chooseTitle, chooseIcon, setQuiz, setDarkMode, setQuestions, chooseAnswer, updateIndex, updateScore } // export action creators
+export { store, chooseTitle, chooseIcon, setQuiz, setDarkMode, setQuestions, setCorrectAnswer, chooseAnswer, updateIndex, updateScore } // export action creators

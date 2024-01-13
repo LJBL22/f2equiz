@@ -13,6 +13,9 @@ const quizSlice = createSlice({
     setQuestions(state, action) {
       state.questions = action.payload
     },
+    setCorrectAnswer(state, action) {
+      state.correctAnswer = action.payload
+    },
     chooseAnswer(state, action) {
       state.selectedAnswer = action.payload
     },
@@ -27,5 +30,5 @@ const quizSlice = createSlice({
   },
 })
 
-export const { setQuestions, chooseAnswer, updateIndex, updateScore } = quizSlice.actions;
+export const { setQuestions, setCorrectAnswer, chooseAnswer, updateIndex, updateScore } = quizSlice.actions;
 export const quizReducer = quizSlice.reducer;
