@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const jsonServerUrl = 'http://localhost:3000/quizzes'
+const jsonServerUrl = 'https://f2equiz-json-b9kxbti70-ljbl22s-projects.vercel.app'
 
 export const getQuiz = async () => {
   try {
