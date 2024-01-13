@@ -59,7 +59,7 @@ const Quiz = () => {
         <h2 className='text-xl font-medium mb-6'>{currentQuestion}</h2>
         <progress value={index * 10} max='100'></progress>
       </section>
-      <section>
+      <section className='space-y-3'>
         {renderedOptions}
         <Button
           content={isSubmitted ? 'Next Question' : 'Submit Answer'}
