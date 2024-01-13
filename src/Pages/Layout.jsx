@@ -4,11 +4,16 @@ import { useSelector } from 'react-redux';
 
 const Layout = () => {
   const { darkMode } = useSelector((state) => state.menu);
-  const bgImg = darkMode //!!! ///tablet bgImg does not work
-    ? 'bg-[url(./pattern-background-mobile-dark.svg)] bg-navy-dark tablet:bg-[url(./pattern-background-tablet-dark.svg) '
-    : 'bg-[url(./pattern-background-mobile-light.svg)] bg-light-grey tablet:bg-[url(./pattern-background-tablet-light.svg)';
+  const bgImg = darkMode
+    ? { backgroundImage: `url('/pattern-background-mobile-dark.svg')` }
+    : { backgroundImage: `url('/pattern-background-mobile-light.svg')` };
+
+  const bgTextColor = darkMode
+    ? 'text-pure-white bg-navy-grey'
+    : 'text-navy-dark bg-light-grey';
+
   return (
-    <div className={`h-screen font-rubik ${bgImg} px-6 text-navy-dark`}>
+    <div className={`h-screen font-rubik px-6 ${bgTextColor}`} style={bgImg}>
       <Header />
       <Outlet />
     </div>
