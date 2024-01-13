@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getQuiz } from '../Common/utility';
+import { getQuiz } from '../api/utility';
 import Topic from '../Components/Topic';
 import { useEffect } from 'react';
 import { setQuiz } from '../store';
