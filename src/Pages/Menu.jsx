@@ -1,18 +1,27 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getQuiz } from '../Common/utility';
 import Topic from '../Components/Topic';
 import { useEffect } from 'react';
 import { setQuiz } from '../store';
 
-const data = getQuiz();
 const Menu = () => {
   // 儲存 quiz data 至狀態
+  const { quizzes } = useSelector((state) => state.menu);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setQuiz(data));
+    const getQuizAsync = async () => {
+      try {
+        const data = await getQuiz();
+        dispatch(setQuiz(data));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getQuizAsync();
   }, [dispatch]);
+
   // render 出四個 title
-  const renderedTopics = data.map((topic) => (
+  const renderedTopics = quizzes.map((topic) => (
     <Topic key={topic.title} img={topic.icon} text={topic.title} isBtn={true} />
   ));
 
