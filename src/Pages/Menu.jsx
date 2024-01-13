@@ -4,7 +4,7 @@ import Topic from '../Components/Topic';
 import { useEffect } from 'react';
 import { setQuiz } from '../store';
 
-const data = await getQuiz();
+const data = getQuiz();
 const Menu = () => {
   // 儲存 quiz data 至狀態
   const dispatch = useDispatch();
