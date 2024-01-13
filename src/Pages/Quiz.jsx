@@ -57,7 +57,14 @@ const Quiz = () => {
           Question {index + 1} of {questions.length}
         </h4>
         <h2 className='text-xl font-medium mb-6'>{currentQuestion}</h2>
-        <progress value={index * 10} max='100'></progress>
+        <progress
+          className='w-full h-4 p-1 rounded-full
+          bg-pure-white [&::-moz-progress-bar]:bg-purple [&::-moz-progress-bar]:rounded-full
+           [&::-webkit-progress-value]:bg-purple [&::-webkit-progress-value]:rounded-full 
+           [&::-webkit-progress-bar]:bg-pure-white'
+          value={index * 10}
+          max='100'
+        ></progress>
       </section>
       <section className='space-y-3'>
         {renderedOptions}
