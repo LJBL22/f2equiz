@@ -13,7 +13,7 @@ const Menu = () => {
   }, [dispatch]);
   // render 出四個 title
   const renderedTopics = data.map((topic) => (
-    <Topic key={topic.title} img={topic.icon} text={topic.title} />
+    <Topic key={topic.title} img={topic.icon} text={topic.title} isBtn={true} />
   ));
 
   return (

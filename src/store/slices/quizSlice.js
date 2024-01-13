@@ -26,9 +26,17 @@ const quizSlice = createSlice({
     // 按第二次 submit
     updateIndex(state, action) {
       state.index++;
+    },
+    // play again
+    resetQuiz(state, action) {
+      state.index = 0;
+      state.questions = [];
+      state.selectedAnswer = '';
+      state.correctAnswer = '';
+      state.score = 0;
     }
   },
 })
 
-export const { setQuestions, setCorrectAnswer, chooseAnswer, updateIndex, updateScore } = quizSlice.actions;
+export const { setQuestions, setCorrectAnswer, chooseAnswer, updateIndex, updateScore, resetQuiz } = quizSlice.actions;
 export const quizReducer = quizSlice.reducer;

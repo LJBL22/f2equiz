@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { resetQuiz } from "./quizSlice";
 
 const menuSlice = createSlice({
   name: 'menu',
@@ -22,6 +23,12 @@ const menuSlice = createSlice({
     setDarkMode(state, action) {
       state.darkMode = action.payload
     }
+  },
+  extraReducers(builder) {
+    builder.addCase(resetQuiz, (state, action) => {
+      state.quizTitle = '';
+      state.quizIcon = '';
+    })
   }
 })
 

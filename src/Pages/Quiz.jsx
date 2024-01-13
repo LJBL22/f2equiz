@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '../Components/Button';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Button from '../Components/Button';
 import {
   setQuestions,
   chooseAnswer,
@@ -17,6 +18,9 @@ const Quiz = () => {
   );
   const selectedData = quizzes.find((item) => item.title === quizTitle);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [isAnswered, setIsAnswered] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // 不太懂先後順序＠＠
@@ -32,10 +36,16 @@ const Quiz = () => {
   }, [answer, quizTitle, dispatch, selectedData]);
 
   const handleSetAnswer = (option) => {
+    if (isSubmitted) return; //讓查看答案的時候不能再選擇 （未來想想 DISABLE 的規劃會不會更好）
     dispatch(chooseAnswer(option));
+    setIsAnswered(true);
   };
 
   const handleSubmit = () => {
+    if (selectedAnswer === '') {
+      setIsAnswered(false);
+      return;
+    }
     if (selectedAnswer === correctAnswer) {
       dispatch(updateScore());
     }
@@ -43,9 +53,15 @@ const Quiz = () => {
   };
 
   const handleNextMove = () => {
+    if (index === 9) {
+      navigate('/result');
+      return;
+    }
     dispatch(updateIndex());
+    dispatch(chooseAnswer(''));
     setIsSubmitted(!isSubmitted);
   };
+
   const renderedOptions = options.map((option, i) => {
     return (
       <button
@@ -64,7 +80,7 @@ const Quiz = () => {
   });
   return (
     <>
-      <section className='mb-10'>
+      <section className='mt-8 mb-10'>
         <h4 className='text-sm italic mb-3 text-navy-grey'>
           Question {index + 1} of {questions.length}
         </h4>
@@ -81,10 +97,22 @@ const Quiz = () => {
       <section className='space-y-3'>
         {renderedOptions}
         <Button
-          content={isSubmitted ? 'Next Question' : 'Submit Answer'}
+          content={
+            isSubmitted && index < 9
+              ? 'Next Question'
+              : isSubmitted
+              ? 'Finished'
+              : 'Submit Answer'
+          }
           onClick={isSubmitted ? handleNextMove : handleSubmit}
         />
       </section>
+      {!isAnswered && (
+        <p className='text-red flex flex-row p-3 items-center justify-center'>
+          <img className='w-6 mr-2' src='./icon-error.svg' alt='icon-error' />
+          <span className='inline-block text-md'>Please select an answer</span>
+        </p>
+      )}
     </>
   );
 };
