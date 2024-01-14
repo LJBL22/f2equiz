@@ -23,7 +23,7 @@ const Quiz = () => {
   const [isAnswered, setIsAnswered] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false); // true 就會出現綠色勾勾 兩個狀態綁在一起
   const [borderEffect, setBorderEffect] = useState(
-    'focus:border-2 focus:shadow-[0_0_0_2px_#A729F5_inset]'
+    'focus:shadow-[0_0_0_2px_#A729F5_inset]'
   );
 
   // 不太懂先後順序＠＠
@@ -51,10 +51,10 @@ const Quiz = () => {
     }
 
     if (selectedAnswer === correctAnswer) {
-      setBorderEffect('border-2 shadow-[0_0_0_2px_[#26D782]_inset]');
+      setBorderEffect('shadow-[0_0_0_2px_#26D782_inset]');
       dispatch(updateScore());
     } else if (selectedAnswer !== correctAnswer) {
-      setBorderEffect('border-2 shadow-[0_0_0_2px_[#EE5454]_inset]');
+      setBorderEffect('shadow-[0_0_0_2px_#EE5454_inset]');
     }
 
     setIsSubmitted(!isSubmitted);
@@ -68,7 +68,7 @@ const Quiz = () => {
     dispatch(updateIndex());
     dispatch(chooseAnswer(''));
     setIsSubmitted(!isSubmitted);
-    setBorderEffect('focus:border-2 focus:shadow-[0_0_0_2px_#A729F5_inset]');
+    setBorderEffect('focus:shadow-[0_0_0_2px_#A729F5_inset]');
   };
 
   const renderedOptions = options.map((option, i) => {
