@@ -21,7 +21,10 @@ const Quiz = () => {
   const navigate = useNavigate();
 
   const [isAnswered, setIsAnswered] = useState(true);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false); // true 就會出現綠色勾勾 兩個狀態綁在一起
+  const [borderEffect, setBorderEffect] = useState(
+    'focus:border-2 focus:shadow-[0_0_0_2px_#A729F5_inset]'
+  );
 
   // 不太懂先後順序＠＠
   // 前面出現 questions undefined 無法讀取
@@ -46,9 +49,14 @@ const Quiz = () => {
       setIsAnswered(false);
       return;
     }
+
     if (selectedAnswer === correctAnswer) {
+      setBorderEffect('border-2 shadow-[0_0_0_2px_[#26D782]_inset]');
       dispatch(updateScore());
+    } else if (selectedAnswer !== correctAnswer) {
+      setBorderEffect('border-2 shadow-[0_0_0_2px_[#EE5454]_inset]');
     }
+
     setIsSubmitted(!isSubmitted);
   };
 
@@ -60,21 +68,32 @@ const Quiz = () => {
     dispatch(updateIndex());
     dispatch(chooseAnswer(''));
     setIsSubmitted(!isSubmitted);
+    setBorderEffect('focus:border-2 focus:shadow-[0_0_0_2px_#A729F5_inset]');
   };
 
   const renderedOptions = options.map((option, i) => {
     return (
       <button
-        className='w-full p-3 font-medium text-lg rounded-xl bg-pure-white flex flex-row items-center'
+        className={`w-full p-3 font-medium text-lg rounded-xl bg-pure-white flex flex-row items-center [&>div]:hover:text-purple [&>div]:hover:bg-[#E6E7FF] [&>div]:focus:text-pure-white [&>div]:focus:bg-purple ${
+          option === selectedAnswer && borderEffect
+        }`}
         key={option}
         onClick={() => handleSetAnswer(option)}
       >
-        <div className='text-navy-grey bg-light-grey w-10 h-10 p-2 rounded-md inline-block mr-4'>
+        <div className='inline-block w-10 h-10 p-2 rounded-md mr-4 text-navy-grey bg-light-grey'>
           {String.fromCharCode(65 + i)}
         </div>
-        <span className='inline-block text-lg font-medium text-left'>
+        <span className='inline-block text-lg font-medium text-left flex-1'>
           {option}
         </span>
+        {isSubmitted && option === correctAnswer && (
+          <img className='w-7' src='./icon-correct.svg' alt='icon-correct' />
+        )}
+        {isSubmitted &&
+          option === selectedAnswer &&
+          option !== correctAnswer && (
+            <img className='w-7' src='./icon-error.svg' alt='icon-error' />
+          )}
       </button>
     );
   });
