@@ -51,10 +51,14 @@ const Quiz = () => {
     }
 
     if (selectedAnswer === correctAnswer) {
-      setBorderEffect('shadow-[0_0_0_2px_#26D782_inset]');
+      setBorderEffect(
+        'shadow-[0_0_0_2px_#26D782_inset] [&>div]:bg-green [&>div]:text-pure-white'
+      );
       dispatch(updateScore());
     } else if (selectedAnswer !== correctAnswer) {
-      setBorderEffect('shadow-[0_0_0_2px_#EE5454_inset]');
+      setBorderEffect(
+        'shadow-[0_0_0_2px_#EE5454_inset] [&>div]:bg-red [&>div]:text-pure-white'
+      );
     }
 
     setIsSubmitted(!isSubmitted);
