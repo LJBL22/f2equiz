@@ -78,9 +78,11 @@ const Quiz = () => {
   const renderedOptions = options.map((option, i) => {
     return (
       <button
-        className={`w-full p-3 font-medium text-lg rounded-xl bg-pure-white flex flex-row items-center [&>div]:hover:text-purple [&>div]:hover:bg-[#E6E7FF] [&>div]:focus:text-pure-white [&>div]:focus:bg-purple ${
-          option === selectedAnswer && borderEffect
-        }`}
+        className={`w-full p-3 font-medium text-lg rounded-xl bg-pure-white flex flex-row items-center ${
+          isSubmitted
+            ? 'pointer-events-none'
+            : `[&>div]:hover:text-purple [&>div]:hover:bg-[#E6E7FF] [&>div]:focus:text-pure-white [&>div]:focus:bg-purple`
+        } ${option === selectedAnswer && borderEffect}`}
         key={option}
         onClick={() => handleSetAnswer(option)}
       >
