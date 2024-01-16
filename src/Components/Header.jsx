@@ -6,7 +6,7 @@ const Header = () => {
   const { quizIcon, quizTitle } = useSelector((state) => state.menu);
 
   return (
-    <header className='flex flex-row justify-between py-4 '>
+    <header className='flex flex-row justify-between py-4 tablet:py-10'>
       <Topic isBtn={false} img={quizIcon} text={quizTitle} />
       <Switch />
     </header>

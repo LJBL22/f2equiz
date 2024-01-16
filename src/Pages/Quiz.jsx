@@ -78,7 +78,7 @@ const Quiz = () => {
   const renderedOptions = options.map((option, i) => {
     return (
       <button
-        className={`w-full p-3 font-medium text-lg rounded-xl bg-pure-white flex flex-row items-center ${
+        className={`flex flex-row items-center w-full p-3 font-medium text-lg tablet:text-2xl rounded-xl bg-pure-white ${
           isSubmitted
             ? 'pointer-events-none'
             : `[&>div]:hover:text-purple [&>div]:hover:bg-[#E6E7FF] [&>div]:focus:text-pure-white [&>div]:focus:bg-purple`
@@ -86,14 +86,18 @@ const Quiz = () => {
         key={option}
         onClick={() => handleSetAnswer(option)}
       >
-        <div className='inline-block w-10 h-10 p-2 rounded-md mr-4 text-navy-grey bg-light-grey'>
+        <div className='inline-block w-10 h-10 tablet:w-14 tablet:h-14 leading-10 tablet:leading-[56px] rounded-md mr-4 tablet:mr-8 text-navy-grey bg-light-grey'>
           {String.fromCharCode(65 + i)}
         </div>
-        <span className='inline-block text-lg font-medium text-left flex-1'>
+        <span className='inline-block  font-medium text-left flex-1'>
           {option}
         </span>
         {isSubmitted && option === correctAnswer && (
-          <img className='w-7' src='./icon-correct.svg' alt='icon-correct' />
+          <img
+            className='w-7 tablet:w-8'
+            src='./icon-correct.svg'
+            alt='icon-correct'
+          />
         )}
         {isSubmitted &&
           option === selectedAnswer &&
@@ -105,11 +109,13 @@ const Quiz = () => {
   });
   return (
     <>
-      <section className='mt-8 mb-10'>
-        <h4 className='text-sm italic mb-3 text-navy-grey'>
+      <section className='mt-8 mb-10 tablet:mt-0 tablet:mb-14'>
+        <h4 className='text-sm tablet:text-xl italic mb-3 tablet:mb-7 text-navy-grey'>
           Question {index + 1} of {questions.length}
         </h4>
-        <h2 className='text-xl font-medium mb-6'>{currentQuestion}</h2>
+        <h2 className='text-xl tablet:text-4xl font-medium mb-6 tablet:mb-10'>
+          {currentQuestion}
+        </h2>
         <progress
           className='w-full h-4 p-1 rounded-full
           bg-pure-white [&::-moz-progress-bar]:bg-purple [&::-moz-progress-bar]:rounded-full
@@ -119,8 +125,8 @@ const Quiz = () => {
           max='100'
         ></progress>
       </section>
-      <section className='space-y-3'>
-        {renderedOptions}
+      <section>
+        <div className='space-y-3 tablet:space-y-6'>{renderedOptions}</div>
         <Button
           content={
             isSubmitted && index < 9
@@ -131,13 +137,19 @@ const Quiz = () => {
           }
           onClick={isSubmitted ? handleNextMove : handleSubmit}
         />
+        {!isAnswered && (
+          <p className='text-red flex flex-row items-center justify-center'>
+            <img
+              className='w-6 tablet:w-10 mr-2'
+              src='./icon-error.svg'
+              alt='icon-error'
+            />
+            <span className='inline-block text-md tablet:text-2xl'>
+              Please select an answer
+            </span>
+          </p>
+        )}
       </section>
-      {!isAnswered && (
-        <p className='text-red flex flex-row p-3 items-center justify-center'>
-          <img className='w-6 mr-2' src='./icon-error.svg' alt='icon-error' />
-          <span className='inline-block text-md'>Please select an answer</span>
-        </p>
-      )}
     </>
   );
 };

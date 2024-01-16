@@ -17,3 +17,38 @@
   font-weight: 300 700;
   font-style: normal;
 }
+
+.dark-bg {
+  background: url('/pattern-background-mobile-dark.svg') top left no-repeat,
+    #313e51;
+}
+.light-bg {
+  background: url('/pattern-background-mobile-light.svg') top left no-repeat,
+    #f4f6fa;
+}
+
+@media (min-width: 32.5rem) {
+  .dark-bg {
+    background: url('/pattern-background-tablet-dark.svg') no-repeat top left,
+      #313e51;
+  }
+
+  .light-bg {
+    background: url('/pattern-background-tablet-light.svg') no-repeat top left,
+      #f4f6fa;
+  }
+}
+
+@media (min-width: 64rem) {
+  .dark-bg {
+    background: url('/pattern-background-desktop-dark.svg') no-repeat
+        center/cover,
+      #313e51;
+  }
+
+  .light-bg {
+    background: url('/pattern-background-desktop-light.svg') no-repeat
+        center/cover,
+      #f4f6fa;
+  }
+}

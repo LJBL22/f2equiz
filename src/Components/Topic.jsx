@@ -32,10 +32,12 @@ const Topic = ({ img, text, isBtn, children }) => {
           <img
             src={img}
             alt={text}
-            className='w-10 h-10 p-2 rounded-md mr-4'
+            className='w-10 h-10 tablet:w-14 tablet:h-14 p-2 rounded-md mr-4 tablet:mr-8'
             style={bgStyle}
           />
-          <span className='inline-block text-lg font-medium'>{text}</span>
+          <span className='inline-block text-lg tablet:text-2xl font-medium'>
+            {text}
+          </span>
         </button>
       ) : (
         <div
@@ -46,10 +48,12 @@ const Topic = ({ img, text, isBtn, children }) => {
           <img
             src={img}
             alt={text}
-            className='w-10 h-10 p-2 rounded-md mr-4'
+            className='w-10 h-10 tablet:w-14 tablet:h-14 p-2 rounded-md mr-4 tablet:mr-8'
             style={bgStyle}
           />
-          <span className='inline-block text-lg font-medium'>{text}</span>
+          <span className='inline-block text-lg tablet:text-2xl font-medium'>
+            {text}
+          </span>
         </div>
       )}
     </>

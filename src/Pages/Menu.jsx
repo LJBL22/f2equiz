@@ -28,17 +28,19 @@ const Menu = () => {
   return (
     <>
       <section>
-        <h1 className='text-4xl my-4'>
-          <span className='font-light'>Welcome to the </span>
+        <h1 className='text-4xl my-4 tablet:text-6xl'>
+          <span className='inline-block font-light tablet:mb-2'>
+            Welcome to the
+          </span>
           <br />
           <span className='font-medium'>Frontend Quiz!</span>
         </h1>
-        <h4 className='text-sm italic mb-10 text-navy-grey'>
+        <h4 className='text-sm tablet:text-xl italic mb-10 tablet:mb-16 text-navy-grey'>
           Pick a subject to get started.
         </h4>
       </section>
       <section>
-        <div className='space-y-3'>{renderedTopics}</div>
+        <div className='space-y-3 tablet:space-y-6'>{renderedTopics}</div>
       </section>
     </>
   );
