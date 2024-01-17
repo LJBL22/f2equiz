@@ -9,10 +9,12 @@ const Layout = () => {
   const bgTextColor = darkMode ? 'text-pure-white' : 'text-navy-dark';
   return (
     <div
-      className={`h-screen font-rubik px-6 tablet:px-12 transition-all duration-300 ${bgImg} ${bgTextColor}`}
+      className={`h-screen font-rubik px-6 tablet:px-12 ${bgImg} ${bgTextColor} transition-all duration-300`}
     >
       <Header />
-      <Outlet />
+      <main className='desktop:grid desktop:grid-cols-2 desktop:gap-24 screen:gap-28 desktop:max-w-6xl desktop:my-0 desktop:mx-auto'>
+        <Outlet />
+      </main>
     </div>
   );
 };

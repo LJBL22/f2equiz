@@ -35,7 +35,7 @@ const Topic = ({ img, text, isBtn, children }) => {
             className='w-10 h-10 tablet:w-14 tablet:h-14 p-2 rounded-md mr-4 tablet:mr-8'
             style={bgStyle}
           />
-          <span className='inline-block text-lg tablet:text-2xl font-medium'>
+          <span className='inline-block text-lg tablet:text-2xl desktop:text-3xl font-medium'>
             {text}
           </span>
         </button>
@@ -51,7 +51,7 @@ const Topic = ({ img, text, isBtn, children }) => {
             className='w-10 h-10 tablet:w-14 tablet:h-14 p-2 rounded-md mr-4 tablet:mr-8'
             style={bgStyle}
           />
-          <span className='inline-block text-lg tablet:text-2xl font-medium'>
+          <span className='inline-block text-lg tablet:text-2xl desktop:text-3xl font-medium'>
             {text}
           </span>
         </div>

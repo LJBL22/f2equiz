@@ -78,7 +78,7 @@ const Quiz = () => {
   const renderedOptions = options.map((option, i) => {
     return (
       <button
-        className={`flex flex-row items-center w-full p-3 font-medium text-lg tablet:text-2xl rounded-xl bg-pure-white ${
+        className={`flex flex-row items-center w-full p-3 font-medium text-lg tablet:text-2xl desktop:text-3xl rounded-xl bg-pure-white ${
           isSubmitted
             ? 'pointer-events-none'
             : `[&>div]:hover:text-purple [&>div]:hover:bg-[#E6E7FF] [&>div]:focus:text-pure-white [&>div]:focus:bg-purple`
@@ -109,7 +109,7 @@ const Quiz = () => {
   });
   return (
     <>
-      <section className='mt-8 mb-10 tablet:mt-0 tablet:mb-14'>
+      <section className='mt-8 mb-10 tablet:mt-0 tablet:mb-14 desktop:max-h-[28.25rem] desktop:relative'>
         <h4 className='text-sm tablet:text-xl italic mb-3 tablet:mb-7 text-navy-grey'>
           Question {index + 1} of {questions.length}
         </h4>
@@ -120,7 +120,7 @@ const Quiz = () => {
           className='w-full h-4 p-1 rounded-full
           bg-pure-white [&::-moz-progress-bar]:bg-purple [&::-moz-progress-bar]:rounded-full
            [&::-webkit-progress-value]:bg-purple [&::-webkit-progress-value]:rounded-full 
-           [&::-webkit-progress-bar]:bg-pure-white'
+           [&::-webkit-progress-bar]:bg-pure-white desktop:absolute desktop:bottom-6'
           value={index * 10}
           max='100'
         ></progress>
