@@ -28,7 +28,7 @@ const Menu = () => {
   return (
     <>
       <section>
-        <h1 className='text-4xl my-4 desktop:mb-12 tablet:text-6xl desktop:text-[4rem]'>
+        <h1 className='text-4xl my-4 desktop:mb-12 tablet:text-6xl desktop:text-[4rem] transition-all duration-300'>
           <span className='inline-block font-light tablet:mb-2'>
             Welcome to the
           </span>
