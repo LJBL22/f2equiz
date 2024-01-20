@@ -18,37 +18,51 @@
   font-style: normal;
 }
 
-.dark-bg {
-  background: url('/pattern-background-mobile-dark.svg') top left no-repeat,
-    #313e51;
-}
-.light-bg {
-  background: url('/pattern-background-mobile-light.svg') top left no-repeat,
-    #f4f6fa;
-}
+@layer base {
+  :root {
+    --bkg: #f4f6fa;
+    --title-main: #313e51;
+    --title-sub: #626c7f;
+    --box-bg: #ffffff;
+    --error: #ee5454;
+  }
 
-@media (min-width: 32.5rem) {
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bkg: #313e51;
+      --title-main: #ffffff;
+      --title-sub: #abc1e1;
+      --box-bg: #3b4d66;
+      --error: #f4f6fa;
+    }
+  }
   .dark-bg {
-    background: url('/pattern-background-tablet-dark.svg') no-repeat top left,
-      #313e51;
+    background: url('/pattern-background-mobile-dark.svg') no-repeat top left;
   }
 
   .light-bg {
-    background: url('/pattern-background-tablet-light.svg') no-repeat top left,
-      #f4f6fa;
-  }
-}
-
-@media (min-width: 64rem) {
-  .dark-bg {
-    background: url('/pattern-background-desktop-dark.svg') no-repeat
-        center/cover,
-      #313e51;
+    background: url('/pattern-background-mobile-light.svg') no-repeat top left;
   }
 
-  .light-bg {
-    background: url('/pattern-background-desktop-light.svg') no-repeat
-        center/cover,
-      #f4f6fa;
+  @media (min-width: 32.5rem) {
+    .dark-bg {
+      background: url('/pattern-background-tablet-dark.svg') no-repeat top left;
+    }
+
+    .light-bg {
+      background: url('/pattern-background-tablet-light.svg') no-repeat top left;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .dark-bg {
+      background: url('/pattern-background-desktop-dark.svg') no-repeat
+        center/cover;
+    }
+
+    .light-bg {
+      background: url('/pattern-background-desktop-light.svg') no-repeat
+        center/cover;
+    }
   }
 }

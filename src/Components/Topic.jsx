@@ -26,7 +26,7 @@ const Topic = ({ img, text, isBtn, children }) => {
     <>
       {isBtn ? (
         <button
-          className='flex flex-row p-3 cursor-pointer items-center bg-pure-white w-full rounded-xl'
+          className='flex flex-row p-3 cursor-pointer items-center bg-box-bg w-full rounded-xl'
           onClick={setTopic}
         >
           <img

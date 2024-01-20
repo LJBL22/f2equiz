@@ -37,7 +37,7 @@ const Result = () => {
               <p className='font-medium text-[5.5rem] tablet:text-[9rem] leading-none'>
                 {score}
               </p>
-              <p className='text-navy-grey text-lg tablet:text-2xl font-thin tablet:leading-9'>
+              <p className='text-title-sub text-lg tablet:text-2xl font-thin tablet:leading-9'>
                 out of {questions.length}
               </p>
             </div>

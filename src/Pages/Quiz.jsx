@@ -110,7 +110,7 @@ const Quiz = () => {
   return (
     <>
       <section className='mt-8 mb-10 tablet:mt-0 tablet:mb-14 desktop:max-h-[28.25rem] desktop:relative'>
-        <h4 className='text-sm tablet:text-xl italic mb-3 tablet:mb-7 text-navy-grey'>
+        <h4 className='text-sm tablet:text-xl italic mb-3 tablet:mb-7 text-title-sub'>
           Question {index + 1} of {questions.length}
         </h4>
         <h2 className='text-xl tablet:text-4xl font-medium mb-6 tablet:mb-10'>
@@ -118,9 +118,9 @@ const Quiz = () => {
         </h2>
         <progress
           className='w-full h-4 p-1 rounded-full
-          bg-pure-white [&::-moz-progress-bar]:bg-purple [&::-moz-progress-bar]:rounded-full
+          bg-box-bg [&::-moz-progress-bar]:bg-purple [&::-moz-progress-bar]:rounded-full
            [&::-webkit-progress-value]:bg-purple [&::-webkit-progress-value]:rounded-full 
-           [&::-webkit-progress-bar]:bg-pure-white desktop:absolute desktop:bottom-6'
+           [&::-webkit-progress-bar]:bg-box-bg desktop:absolute desktop:bottom-6'
           value={index * 10}
           max='100'
         ></progress>
@@ -138,7 +138,7 @@ const Quiz = () => {
           onClick={isSubmitted ? handleNextMove : handleSubmit}
         />
         {!isAnswered && (
-          <p className='text-red flex flex-row items-center justify-center'>
+          <p className='text-error flex flex-row items-center justify-center'>
             <img
               className='w-6 tablet:w-10 mr-2'
               src='./icon-error.svg'

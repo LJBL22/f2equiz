@@ -35,7 +35,7 @@ const Menu = () => {
           <br />
           <span className='font-medium'>Frontend Quiz!</span>
         </h1>
-        <h4 className='text-sm tablet:text-xl italic mb-10 tablet:mb-16 text-navy-grey'>
+        <h4 className='text-sm tablet:text-xl italic mb-10 tablet:mb-16 text-title-sub'>
           Pick a subject to get started.
         </h4>
       </section>

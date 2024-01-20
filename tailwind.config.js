@@ -27,6 +27,11 @@ export default {
         'pure-white': '#FFFFFF',
         'green': '#26D782',
         'red': '#EE5454',
+        bkg: "var(--bkg)",
+        "title-main": "var(--title-main)",
+        "title-sub": "var(--title-sub)",
+        "box-bg": "var(--box-bg)",
+        error: "var(--error)",
       },
     }
   },

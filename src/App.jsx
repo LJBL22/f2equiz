@@ -12,7 +12,7 @@ const App = () => {
   function ErrorBoundary() {
     let error = useRouteError();
     return (
-      <h1 className='text-6xl font-bold text-rose-500 tracking-wider'>
+      <h1 className='text-6xl font-bold text-red tracking-wider'>
         Oops, something goes wrong, please go back to the index page.
       </h1>
     );
