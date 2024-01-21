@@ -9,12 +9,6 @@ const Switch = () => {
   // 已經在 app 執行 1) 在 root 放 light 2)在localS 放 light
   // 這裡關注 2) 的東西要再 set => 後續可能會影響 toggle 的位置 （dark 就在右、light就在左）
 
-  const handleChange = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    dispatch(setTheme(newTheme));
-    localStorage.setItem('theme', newTheme);
-  };
-
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.setAttribute('data-theme', theme);
@@ -22,6 +16,13 @@ const Switch = () => {
       document.documentElement.setAttribute('data-theme', theme);
     }
   }, [theme]);
+
+  const handleChange = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    dispatch(setTheme(newTheme));
+    localStorage.setItem('theme', newTheme);
+  };
+
   return (
     <div className='flex flex-row w-auto items-center gap-2'>
       <div className='w-4 h-4 tablet:w-6 tablet:h-6'>
@@ -52,9 +53,5 @@ const Switch = () => {
     </div>
   );
 };
-
-// 先用現在寫寫看 xx
-// button onClick
-// radio onChange => 觸發事件 1）更改 state 2)滑動（也就是增加一個 classname)
 
 export default Switch;

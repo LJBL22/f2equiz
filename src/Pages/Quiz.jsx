@@ -9,9 +9,9 @@ import {
   updateScore,
   updateIndex,
 } from '../store';
+import Progress from '../Components/Progress';
 
 const Quiz = () => {
-  // Access states
   const { quizzes, quizTitle } = useSelector((state) => state.menu);
   const { questions, index, selectedAnswer, correctAnswer } = useSelector(
     (state) => state.quiz
@@ -21,7 +21,7 @@ const Quiz = () => {
   const navigate = useNavigate();
 
   const [isAnswered, setIsAnswered] = useState(true);
-  const [isSubmitted, setIsSubmitted] = useState(false); // true 就會出現綠色勾勾 兩個狀態綁在一起
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [borderEffect, setBorderEffect] = useState(
     'focus:shadow-[0_0_0_2px_#A729F5_inset]'
   );
@@ -39,7 +39,7 @@ const Quiz = () => {
   }, [answer, quizTitle, dispatch, selectedData]);
 
   const handleSetAnswer = (option) => {
-    if (isSubmitted) return; //讓查看答案的時候不能再選擇 （未來想想 DISABLE 的規劃會不會更好）
+    if (isSubmitted) return;
     dispatch(chooseAnswer(option));
     setIsAnswered(true);
   };
@@ -120,14 +120,7 @@ const Quiz = () => {
         <h2 className='text-xl tablet:text-4xl font-medium mb-6 tablet:mb-10'>
           {currentQuestion}
         </h2>
-        <progress
-          className='w-full h-4 p-1 rounded-full
-          bg-box-bg [&::-moz-progress-bar]:bg-purple [&::-moz-progress-bar]:rounded-full
-           [&::-webkit-progress-value]:bg-purple [&::-webkit-progress-value]:rounded-full 
-           [&::-webkit-progress-bar]:bg-box-bg desktop:absolute desktop:bottom-6'
-          value={index * 10}
-          max='100'
-        ></progress>
+        <Progress isSubmitted={isSubmitted} />
       </section>
       <section>
         <div className='space-y-3 tablet:space-y-6'>{renderedOptions}</div>
