@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { getQuiz } from '../utils/api';
 import Topic from '../Components/Topic';
-import { useEffect } from 'react';
-import { setQuiz } from '../store';
+import { setQuiz, chooseIcon, chooseTitle } from '../store';
 
 const Menu = () => {
   const { quizzes } = useSelector((state) => state.menu);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
     const getQuizAsync = async () => {
       try {
@@ -19,8 +22,21 @@ const Menu = () => {
     getQuizAsync();
   }, [dispatch]);
 
+  // refactor: from Topic to Menu (where take actions)
+  const setTopic = (selectedTopic) => {
+    dispatch(chooseTitle(selectedTopic.title));
+    dispatch(chooseIcon(selectedTopic.icon));
+    navigate(`/${selectedTopic.title}`);
+  };
+
   const renderedTopics = quizzes.map((topic) => (
-    <Topic key={topic.title} img={topic.icon} text={topic.title} isBtn={true} />
+    <Topic
+      key={topic.title}
+      img={topic.icon}
+      text={topic.title}
+      isBtn={true}
+      handleClick={() => setTopic(topic)}
+    />
   ));
 
   return (

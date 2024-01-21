@@ -1,16 +1,4 @@
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { chooseIcon, chooseTitle } from '../store';
-
-const Topic = ({ img, text, isBtn, children }) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const setTopic = () => {
-    dispatch(chooseTitle(text));
-    dispatch(chooseIcon(img));
-    navigate(`/${text}`);
-  };
-
+const Topic = ({ img, text, isBtn, handleClick, children }) => {
   const bgColors = {
     HTML: '#FFF1E9',
     CSS: '#E0FDEF',
@@ -22,12 +10,16 @@ const Topic = ({ img, text, isBtn, children }) => {
     backgroundColor: bgColors[text],
   };
 
+  const onClickHandler = (event) => {
+    handleClick(event);
+  };
+
   return (
     <>
       {isBtn ? (
         <button
           className='flex flex-row p-3 cursor-pointer items-center bg-box-bg w-full rounded-xl'
-          onClick={setTopic}
+          onClick={onClickHandler}
         >
           <img
             src={img}
