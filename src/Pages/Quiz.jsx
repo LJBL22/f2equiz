@@ -78,7 +78,7 @@ const Quiz = () => {
   const renderedOptions = options.map((option, i) => {
     return (
       <button
-        className={`flex flex-row items-center w-full p-3 font-medium text-lg tablet:text-2xl desktop:text-3xl rounded-xl bg-pure-white ${
+        className={`flex flex-row items-center w-full p-3 font-medium text-lg tablet:text-2xl desktop:text-3xl rounded-xl bg-box-bg ${
           isSubmitted
             ? 'pointer-events-none'
             : `[&>div]:hover:text-purple [&>div]:hover:bg-[#E6E7FF] [&>div]:focus:text-pure-white [&>div]:focus:bg-purple`

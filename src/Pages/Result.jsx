@@ -26,7 +26,7 @@ const Result = () => {
       </section>
       <section>
         <div className='mb-3 tablet:mb-8 '>
-          <div className='bg-pure-white w-full p-8 tablet:p-12 rounded-xl text-center'>
+          <div className='bg-box-bg w-full p-8 tablet:p-12 rounded-xl text-center'>
             <Topic
               isBtn={false}
               img={quizIcon}

@@ -3,8 +3,8 @@ import Header from '../Components/Header';
 import { useSelector } from 'react-redux';
 
 const Layout = () => {
-  const { darkMode } = useSelector((state) => state.menu);
-  const bgImg = darkMode ? 'dark-bg' : 'light-bg';
+  const { theme } = useSelector((state) => state.menu);
+  const bgImg = theme === 'dark' ? 'dark-bg' : 'light-bg';
 
   return (
     <div
