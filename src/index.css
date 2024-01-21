@@ -43,6 +43,13 @@
     --box-bg: #3b4d66;
     --error: #f4f6fa;
   }
+  :root[data-theme='light'] {
+    --bkg: #f4f6fa;
+    --title-main: #313e51;
+    --title-sub: #626c7f;
+    --box-bg: #ffffff;
+    --error: #ee5454;
+  }
 
   .dark-bg {
     background: url('/pattern-background-mobile-dark.svg') no-repeat top left;

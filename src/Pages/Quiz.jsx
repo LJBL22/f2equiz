@@ -102,7 +102,11 @@ const Quiz = () => {
         {isSubmitted &&
           option === selectedAnswer &&
           option !== correctAnswer && (
-            <img className='w-7' src='./icon-error.svg' alt='icon-error' />
+            <img
+              className='w-7'
+              src='./icon-incorrect.svg'
+              alt='icon-incorrect'
+            />
           )}
       </button>
     );
@@ -137,18 +141,20 @@ const Quiz = () => {
           }
           onClick={isSubmitted ? handleNextMove : handleSubmit}
         />
-        {!isAnswered && (
-          <p className='text-error flex flex-row items-center justify-center'>
-            <img
-              className='w-6 tablet:w-10 mr-2'
-              src='./icon-error.svg'
-              alt='icon-error'
-            />
-            <span className='inline-block text-md tablet:text-2xl'>
-              Please select an answer
-            </span>
-          </p>
-        )}
+        <p
+          className={`text-error flex flex-row items-center justify-center ${
+            isAnswered ? 'opacity-0' : 'opacity-100'
+          }`}
+        >
+          <img
+            className='w-6 tablet:w-10 mr-2'
+            src='./icon-error.svg'
+            alt='icon-error'
+          />
+          <span className='inline-block text-md tablet:text-2xl'>
+            Please select an answer
+          </span>
+        </p>
       </section>
     </>
   );
