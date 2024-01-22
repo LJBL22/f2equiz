@@ -27,6 +27,5 @@ dist-ssr
 *.xd
 
 README-template.md
-README.md
 
 tailwind-full.config.js

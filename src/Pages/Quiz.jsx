@@ -26,9 +26,7 @@ const Quiz = () => {
     'focus:shadow-[0_0_0_2px_#A729F5_inset]'
   );
 
-  // 不太懂先後順序＠＠
-  // 前面出現 questions undefined 無法讀取
-  // 後才 useEffect 有就更新
+  // 這裡的目的只是『命名變數簡化程式碼』、沒有存在同步異步問題、勿搞混
   const currentQuestion = selectedData.questions[index].question;
   const options = selectedData.questions[index].options;
   const answer = selectedData.questions[index].answer;
@@ -65,7 +63,7 @@ const Quiz = () => {
   };
 
   const handleNextMove = () => {
-    if (index === 9) {
+    if (index === questions.length - 1) {
       navigate('/result');
       return;
     }
