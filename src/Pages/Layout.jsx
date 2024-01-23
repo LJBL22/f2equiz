@@ -1,17 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import Header from '../Components/Header';
-import { useDispatch, useSelector } from 'react-redux';
-import { setTheme } from '../store';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const Layout = () => {
   const { theme } = useSelector((state) => state.menu);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const currentTheme = localStorage.getItem('theme');
-    dispatch(setTheme(currentTheme));
-  }, [dispatch, theme]);
 
   const bgImg = theme === 'dark' ? 'dark-bg' : 'light-bg';
 

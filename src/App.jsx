@@ -1,42 +1,40 @@
-import {
-  RouterProvider,
-  createBrowserRouter,
-  useRouteError,
-} from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Menu from './Pages/Menu';
 import Quiz from './Pages/Quiz';
 import Result from './Pages/Result';
 import Layout from './Pages/Layout';
-import { useLayoutEffect } from 'react';
-import { useSelector } from 'react-redux';
+import ErrorBoundary from './Components/ErrorBoundary';
+import { setTheme } from './store';
 
 const App = () => {
-  const { theme: stateTheme } = useSelector((state) => state.menu);
+  const dispatch = useDispatch();
 
-  function ErrorBoundary() {
-    let error = useRouteError();
-    return (
-      <h1 className='text-6xl font-bold text-red tracking-wider'>
-        Oops, something went wrong. Please return to the index page.
-      </h1>
-    );
-  }
-
-  useLayoutEffect(() => {
-    // check value to set data-theme
-    if (stateTheme) {
-      document.documentElement.setAttribute('data-theme', stateTheme);
+  // 有來訪紀錄？採用：參考偏好顏色模式
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      document.documentElement.setAttribute('data-theme', storedTheme);
+      // console.log('1st useEffect: stored-theme', storedTheme);
     } else {
-      document.documentElement.setAttribute('data-theme', '');
+      const prefersDarkTheme = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches;
+      const initialTheme = prefersDarkTheme ? 'dark' : 'light';
+      // 若無偏好則設定 light ，接著設定 data-theme & localStorage
+      document.documentElement.setAttribute('data-theme', initialTheme);
+      localStorage.setItem('theme', initialTheme);
+      // console.log('1st useEffect:prefers-color-theme', initialTheme);
     }
+  }, []);
 
-    // if user has a preference, prefers-color-scheme detected
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  }, [stateTheme]);
+  // 從 localStorage 取值，設定 state 值
+  useEffect(() => {
+    const currentTheme = localStorage.getItem('theme');
+    dispatch(setTheme(currentTheme));
+    // console.log('2nd useEffect：currentTheme', currentTheme);
+  }, [dispatch]);
 
   const router = createBrowserRouter([
     {

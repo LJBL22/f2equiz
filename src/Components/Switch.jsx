@@ -1,26 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setTheme } from '../store';
-import { useEffect } from 'react';
 
 const Switch = () => {
   const { theme } = useSelector((state) => state.menu);
   const dispatch = useDispatch();
 
-  // 已經在 app 執行 1) 在 root 放 light 2)在localS 放 light
-  // 這裡關注 2) 的東西要再 set => 後續可能會影響 toggle 的位置 （dark 就在右、light就在左）
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.setAttribute('data-theme', theme);
-    } else if (theme === 'light') {
-      document.documentElement.setAttribute('data-theme', theme);
-    }
-  }, [theme]);
-
   const handleChange = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     dispatch(setTheme(newTheme));
     localStorage.setItem('theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
   };
 
   return (
