@@ -14,6 +14,20 @@ const Topic = ({ img, text, isBtn, handleClick, children }) => {
     handleClick(event);
   };
 
+  const commonContent = (
+    <>
+      <img
+        src={img}
+        alt={text}
+        className='w-10 h-10 tablet:w-14 tablet:h-14 p-2 rounded-md mr-4 tablet:mr-8'
+        style={bgStyle}
+      />
+      <span className='inline-block text-lg tablet:text-2xl desktop:text-3xl font-medium'>
+        {text}
+      </span>
+    </>
+  );
+
   return (
     <>
       {isBtn ? (
@@ -21,15 +35,7 @@ const Topic = ({ img, text, isBtn, handleClick, children }) => {
           className='flex flex-row p-3 cursor-pointer items-center bg-box-bg w-full rounded-xl'
           onClick={onClickHandler}
         >
-          <img
-            src={img}
-            alt={text}
-            className='w-10 h-10 tablet:w-14 tablet:h-14 p-2 rounded-md mr-4 tablet:mr-8'
-            style={bgStyle}
-          />
-          <span className='inline-block text-lg tablet:text-2xl desktop:text-3xl font-medium'>
-            {text}
-          </span>
+          {commonContent}
         </button>
       ) : (
         <div
@@ -37,15 +43,7 @@ const Topic = ({ img, text, isBtn, handleClick, children }) => {
             !text && 'invisible'
           } ${children}`}
         >
-          <img
-            src={img}
-            alt={text}
-            className='w-10 h-10 tablet:w-14 tablet:h-14 p-2 rounded-md mr-4 tablet:mr-8'
-            style={bgStyle}
-          />
-          <span className='inline-block text-lg tablet:text-2xl desktop:text-3xl font-medium'>
-            {text}
-          </span>
+          {commonContent}
         </div>
       )}
     </>

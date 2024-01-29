@@ -101,7 +101,7 @@ const Quiz = () => {
           option === selectedAnswer &&
           option !== correctAnswer && (
             <img
-              className='w-7'
+              className='w-7 tablet:w-8'
               src='./icon-incorrect.svg'
               alt='icon-incorrect'
             />

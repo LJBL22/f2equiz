@@ -15,11 +15,12 @@ const Switch = () => {
   return (
     <div className='flex flex-row w-auto items-center gap-2'>
       <div className='w-4 h-4 tablet:w-6 tablet:h-6'>
-        {theme === 'dark' ? (
-          <img src='./icon-sun-light.svg' alt='icon-sun' />
-        ) : (
-          <img src='./icon-sun-dark.svg' alt='icon-sun' />
-        )}
+        <img
+          src={
+            theme === 'dark' ? './icon-sun-light.svg' : './icon-sun-dark.svg'
+          }
+          alt='icon-sun'
+        />
       </div>
       <div className='w-8 h-5 bg-purple rounded-full relative tablet:w-12 tablet:h-7'>
         <input
@@ -33,11 +34,12 @@ const Switch = () => {
         />
       </div>
       <div className='w-4 h-4 tablet:w-6 tablet:h-6'>
-        {theme === 'dark' ? (
-          <img src='./icon-moon-light.svg' alt='icon-moon' />
-        ) : (
-          <img src='./icon-moon-dark.svg' alt='icon-moon' />
-        )}
+        <img
+          src={
+            theme === 'dark' ? './icon-moon-light.svg' : './icon-moon-dark.svg'
+          }
+          alt='icon-moon'
+        />
       </div>
     </div>
   );
