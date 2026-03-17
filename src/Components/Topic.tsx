@@ -1,17 +1,27 @@
-const Topic = ({ img, text, isBtn, handleClick, children }) => {
-  const bgColors = {
-    HTML: '#FFF1E9',
-    CSS: '#E0FDEF',
-    JavaScript: '#EBF0FF',
-    Accessibility: '#F6E7FF',
-  };
+import { MouseEvent } from 'react';
 
-  const bgStyle = {
+interface TopicProps {
+  img: string;
+  text: string;
+  isBtn: boolean;
+  handleClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  children?: string;
+}
+
+const bgColors: Record<string, string> = {
+  HTML: '#FFF1E9',
+  CSS: '#E0FDEF',
+  JavaScript: '#EBF0FF',
+  Accessibility: '#F6E7FF',
+};
+
+const Topic = ({ img, text, isBtn, handleClick, children }: TopicProps) => {
+  const bgStyle: React.CSSProperties = {
     backgroundColor: bgColors[text],
   };
 
-  const onClickHandler = (event) => {
-    handleClick(event);
+  const onClickHandler = (event: MouseEvent<HTMLButtonElement>) => {
+    handleClick?.(event);
   };
 
   const commonContent = (

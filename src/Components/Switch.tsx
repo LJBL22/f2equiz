@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setTheme } from '../store';
+import type { RootState, AppDispatch } from '../store';
 
 const Switch = () => {
-  const { theme } = useSelector((state) => state.menu);
-  const dispatch = useDispatch();
+  const { theme } = useSelector((state: RootState) => state.menu);
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleChange = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';

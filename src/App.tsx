@@ -7,17 +7,13 @@ import Result from './Pages/Result';
 import Layout from './Pages/Layout';
 import ErrorBoundary from './Components/ErrorBoundary';
 import { setTheme } from './store';
+import type { AppDispatch } from './store';
 
 const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   // 有來訪紀錄？採用：參考偏好顏色模式
   useEffect(() => {
-    // const storedTheme = localStorage.getItem('theme');
-    // if (storedTheme) {
-    //   document.documentElement.setAttribute('data-theme', storedTheme);
-    //   // console.log('1st useEffect: stored-theme', storedTheme);
-    // } else {
     const prefersDarkTheme = window.matchMedia(
       '(prefers-color-scheme: dark)'
     ).matches;
@@ -25,15 +21,12 @@ const App = () => {
     // 若無偏好則設定 light ，接著設定 data-theme & localStorage
     document.documentElement.setAttribute('data-theme', initialTheme);
     localStorage.setItem('theme', initialTheme);
-    // console.log('1st useEffect:prefers-color-theme', initialTheme);
-    // }
   }, []);
 
   // 從 localStorage 取值，設定 state 值
   useEffect(() => {
     const currentTheme = localStorage.getItem('theme');
     dispatch(setTheme(currentTheme));
-    // console.log('2nd useEffect：currentTheme', currentTheme);
   }, [dispatch]);
 
   const router = createBrowserRouter([

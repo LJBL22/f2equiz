@@ -1,9 +1,10 @@
 import { Outlet } from 'react-router-dom';
 import Header from '../Components/Header';
 import { useSelector } from 'react-redux';
+import type { RootState } from '../store';
 
 const Layout = () => {
-  const { theme } = useSelector((state) => state.menu);
+  const { theme } = useSelector((state: RootState) => state.menu);
 
   const bgImg = theme === 'dark' ? 'dark-bg' : 'light-bg';
 

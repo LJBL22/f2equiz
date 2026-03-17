@@ -9,15 +9,16 @@ import {
   updateScore,
   updateIndex,
 } from '../store';
+import type { RootState, AppDispatch } from '../store';
 import Progress from '../Components/Progress';
 
 const Quiz = () => {
-  const { quizzes, quizTitle } = useSelector((state) => state.menu);
+  const { quizzes, quizTitle } = useSelector((state: RootState) => state.menu);
   const { questions, index, selectedAnswer, correctAnswer } = useSelector(
-    (state) => state.quiz
+    (state: RootState) => state.quiz
   );
-  const selectedData = quizzes.find((item) => item.title === quizTitle);
-  const dispatch = useDispatch();
+  const selectedData = quizzes.find((item) => item.title === quizTitle)!;
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const [isAnswered, setIsAnswered] = useState(true);
@@ -36,7 +37,7 @@ const Quiz = () => {
     dispatch(setCorrectAnswer(answer));
   }, [answer, quizTitle, dispatch, selectedData]);
 
-  const handleSetAnswer = (option) => {
+  const handleSetAnswer = (option: string) => {
     if (isSubmitted) return;
     dispatch(chooseAnswer(option));
     setIsAnswered(true);

@@ -2,13 +2,14 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../Components/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetQuiz } from '../store';
+import type { RootState, AppDispatch } from '../store';
 import Topic from '../Components/Topic';
 
 const Result = () => {
-  const { quizIcon, quizTitle } = useSelector((state) => state.menu);
-  const { questions, score } = useSelector((state) => state.quiz);
+  const { quizIcon, quizTitle } = useSelector((state: RootState) => state.menu);
+  const { questions, score } = useSelector((state: RootState) => state.quiz);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const handleReset = () => {
     dispatch(resetQuiz());
     navigate('/');

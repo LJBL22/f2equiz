@@ -1,4 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+export interface QuizQuestion {
+  question: string;
+  options: string[];
+  answer: string;
+}
+
+interface QuizState {
+  index: number;
+  questions: QuizQuestion[];
+  selectedAnswer: string;
+  correctAnswer: string;
+  score: number;
+}
 
 const quizSlice = createSlice({
   name: 'quiz',
@@ -8,27 +22,27 @@ const quizSlice = createSlice({
     selectedAnswer: '',
     correctAnswer: '',
     score: 0,
-  },
+  } as QuizState,
   reducers: {
-    setQuestions(state, action) {
+    setQuestions(state, action: PayloadAction<QuizQuestion[]>) {
       state.questions = action.payload
     },
-    setCorrectAnswer(state, action) {
+    setCorrectAnswer(state, action: PayloadAction<string>) {
       state.correctAnswer = action.payload
     },
-    chooseAnswer(state, action) {
+    chooseAnswer(state, action: PayloadAction<string>) {
       state.selectedAnswer = action.payload
     },
     // 按第一次 submit
-    updateScore(state, action) {
+    updateScore(state) {
       state.score++;
     },
     // 按第二次 submit
-    updateIndex(state, action) {
+    updateIndex(state) {
       state.index++;
     },
     // play again
-    resetQuiz(state, action) {
+    resetQuiz(state) {
       state.index = 0;
       state.questions = [];
       state.selectedAnswer = '';

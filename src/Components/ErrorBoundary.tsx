@@ -1,7 +1,7 @@
 import { Link, useRouteError } from 'react-router-dom';
 
 export default function ErrorBoundary() {
-  let error = useRouteError();
+  const error = useRouteError() as { message?: string };
   return (
     <div className='text-3xl text-navy space-y-4'>
       <h1 className='text-6xl font-bold text-red tracking-wider'>

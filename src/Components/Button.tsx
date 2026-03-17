@@ -1,4 +1,11 @@
-const Button = ({ onClick, content }) => {
+import { ReactNode } from 'react';
+
+interface ButtonProps {
+  onClick: () => void;
+  content: ReactNode;
+}
+
+const Button = ({ onClick, content }: ButtonProps) => {
   return (
     <button
       className='w-full p-3 items-center font-medium text-lg tablet:text-2xl bg-purple rounded-xl text-pure-white hover:opacity-50 my-3 tablet:my-8'

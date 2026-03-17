@@ -4,17 +4,19 @@ import { useEffect } from 'react';
 import { getQuiz } from '../utils/api';
 import Topic from '../Components/Topic';
 import { setQuiz, chooseIcon, chooseTitle } from '../store';
+import type { RootState, AppDispatch } from '../store';
+import type { QuizData } from '../store/slices/menuSlice';
 
 const Menu = () => {
-  const { quizzes } = useSelector((state) => state.menu);
-  const dispatch = useDispatch();
+  const { quizzes } = useSelector((state: RootState) => state.menu);
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   useEffect(() => {
     const getQuizAsync = async () => {
       try {
         const data = await getQuiz();
-        dispatch(setQuiz(data));
+        if (data) dispatch(setQuiz(data));
       } catch (error) {
         console.error(error);
       }
@@ -23,7 +25,7 @@ const Menu = () => {
   }, [dispatch]);
 
   // refactor: from Topic to Menu (where take actions)
-  const setTopic = (selectedTopic) => {
+  const setTopic = (selectedTopic: QuizData) => {
     dispatch(chooseTitle(selectedTopic.title));
     dispatch(chooseIcon(selectedTopic.icon));
     navigate(`/${selectedTopic.title}`);

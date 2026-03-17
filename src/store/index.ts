@@ -2,7 +2,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import { menuReducer, chooseTitle, chooseIcon, setQuiz, setTheme } from "./slices/menuSlice";
 import { quizReducer, setQuestions, setCorrectAnswer, chooseAnswer, updateIndex, updateScore, resetQuiz } from "./slices/quizSlice";
 
-
 const store = configureStore({
   reducer: {
     menu: menuReducer,
@@ -10,4 +9,7 @@ const store = configureStore({
   }
 })
 
-export { store, chooseTitle, chooseIcon, setQuiz, setTheme, setQuestions, setCorrectAnswer, chooseAnswer, updateIndex, updateScore, resetQuiz } // export action creators
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+export { store, chooseTitle, chooseIcon, setQuiz, setTheme, setQuestions, setCorrectAnswer, chooseAnswer, updateIndex, updateScore, resetQuiz }
