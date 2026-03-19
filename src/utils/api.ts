@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { QuizData } from '../store/slices/menuSlice';
 
-const jsonServerUrl = 'https://f2equiz-json.vercel.app/quizzes'
+const jsonServerUrl = '/api/quizzes'
 
 export const getQuiz = async (): Promise<QuizData[] | undefined> => {
   try {
