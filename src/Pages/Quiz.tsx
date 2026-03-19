@@ -23,9 +23,6 @@ const Quiz = () => {
 
   const [isAnswered, setIsAnswered] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [borderEffect, setBorderEffect] = useState(
-    'focus:shadow-[0_0_0_2px_#A729F5_inset]'
-  );
 
   // 這裡的目的只是『命名變數簡化程式碼』、沒有存在同步異步問題、勿搞混
   const currentQuestion = selectedData.questions[index].question;
@@ -50,14 +47,7 @@ const Quiz = () => {
     }
 
     if (selectedAnswer === correctAnswer) {
-      setBorderEffect(
-        'shadow-[0_0_0_2px_#26D782_inset] [&>div]:bg-green [&>div]:text-pure-white'
-      );
       dispatch(updateScore());
-    } else if (selectedAnswer !== correctAnswer) {
-      setBorderEffect(
-        'shadow-[0_0_0_2px_#EE5454_inset] [&>div]:bg-red [&>div]:text-pure-white'
-      );
     }
 
     setIsSubmitted(!isSubmitted);
@@ -71,17 +61,32 @@ const Quiz = () => {
     dispatch(updateIndex());
     dispatch(chooseAnswer(''));
     setIsSubmitted(!isSubmitted);
-    setBorderEffect('focus:shadow-[0_0_0_2px_#A729F5_inset]');
+  };
+
+  const getOptionClassName = (option: string) => {
+    const base = `flex flex-row items-center w-full p-3 font-medium text-lg tablet:text-2xl desktop:text-3xl rounded-xl bg-box-bg`;
+
+    if (isSubmitted) {
+      if (option === selectedAnswer && option === correctAnswer) {
+        return `${base} pointer-events-none shadow-[0_0_0_2px_#26D782_inset] [&>div]:bg-green [&>div]:text-pure-white`;
+      }
+      if (option === selectedAnswer) {
+        return `${base} pointer-events-none shadow-[0_0_0_2px_#EE5454_inset] [&>div]:bg-red [&>div]:text-pure-white`;
+      }
+      return `${base} pointer-events-none`;
+    }
+
+    if (option === selectedAnswer) {
+      return `${base} shadow-[0_0_0_2px_#A729F5_inset] [&>div]:bg-purple [&>div]:text-pure-white`;
+    }
+
+    return `${base} [&>div]:hover:text-purple [&>div]:hover:bg-[#E6E7FF] [&>div]:focus:text-pure-white [&>div]:focus:bg-purple`;
   };
 
   const renderedOptions = options.map((option, i) => {
     return (
       <button
-        className={`flex flex-row items-center w-full p-3 font-medium text-lg tablet:text-2xl desktop:text-3xl rounded-xl bg-box-bg ${
-          isSubmitted
-            ? 'pointer-events-none'
-            : `[&>div]:hover:text-purple [&>div]:hover:bg-[#E6E7FF] [&>div]:focus:text-pure-white [&>div]:focus:bg-purple`
-        } ${option === selectedAnswer && borderEffect}`}
+        className={getOptionClassName(option)}
         key={option}
         onClick={() => handleSetAnswer(option)}
       >
