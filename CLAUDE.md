@@ -19,9 +19,9 @@ This is a Frontend Mentor quiz app built with React, Redux Toolkit, React Router
 
 ### Data Flow
 
-Quiz data is fetched from a Vercel-hosted JSON server (`https://f2equiz-json.vercel.app/quizzes`) via `src/utils/api.js`. The local `data.json` is a reference copy of the same structure: `{ quizzes: [{ title, icon, questions: [{ question, options[], answer }] }] }`.
+Quiz data is fetched via `src/utils/api.ts` using the path `/api/quizzes`, which is proxied by Vite to `https://f2equiz-json.vercel.app/quizzes` in development. The local `data.json` is a reference copy of the same structure: `{ quizzes: [{ title, icon, questions: [{ question, options[], answer }] }] }`.
 
-The user flow is: `Menu (/)` → `Quiz (/:topic)` → `Result (/result)`, all wrapped in `Layout.jsx`.
+The user flow is: `Menu (/)` → `Quiz (/:topic)` → `Result (/result)`, all wrapped in `Layout.tsx`.
 
 ### State (Redux Toolkit)
 
@@ -30,11 +30,11 @@ Two slices in `src/store/slices/`:
 - **menuSlice** — `quizTitle`, `quizIcon`, `quizzes[]`, `theme`; actions: `chooseTitle`, `chooseIcon`, `setQuiz`, `setTheme`, `resetQuiz`
 - **quizSlice** — `index`, `questions[]`, `selectedAnswer`, `correctAnswer`, `score`; actions: `setQuestions`, `setCorrectAnswer`, `chooseAnswer`, `updateScore`, `updateIndex`, `resetQuiz`
 
-All action creators are re-exported from `src/store/index.js`.
+All action creators are re-exported from `src/store/index.ts`.
 
 ### Theme System
 
-Theme is set at app mount in `App.jsx` by reading `localStorage`, falling back to `prefers-color-scheme`. The `data-theme` attribute on `<html>` drives CSS variable swaps. `Switch.jsx` updates localStorage, the DOM attribute, and Redux in sync. CSS variables (`--bkg`, `--title-main`, `--title-sub`, `--box-bg`, `--error`) are defined in `src/index.css` for both `[data-theme="light"]` and `[data-theme="dark"]`. Background SVG patterns are also swapped by theme and breakpoint via Tailwind classes on `Layout.jsx`.
+Theme is set at app mount in `App.tsx` by reading `localStorage`, falling back to `prefers-color-scheme`. The `data-theme` attribute on `<html>` drives CSS variable swaps. `Switch.tsx` updates localStorage, the DOM attribute, and Redux in sync. CSS variables (`--bkg`, `--title-main`, `--title-sub`, `--box-bg`, `--error`) are defined in `src/index.css` for both `[data-theme="light"]` and `[data-theme="dark"]`. Background SVG patterns are also swapped by theme and breakpoint via Tailwind classes on `Layout.tsx`.
 
 ### Tailwind Custom Breakpoints
 
