@@ -29,3 +29,6 @@ dist-ssr
 README-template.md
 
 tailwind-full.config.js
+
+.claude
+.playwright-mcp
